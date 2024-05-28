@@ -39,13 +39,16 @@ export default function ListBrand() {
             <h1 className="text-center text-3xl font-bold mb-8">List of brands</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20">
                 {paginatedData.map((brand) => (
-                    <div key={brand.brandId} className="flex">
+                    <div
+                        key={brand.brandId}
+                        className="flex group overflow-hidden rounded-md shadow-lg transition-transform duration-300 transform hover:scale-105"
+                    >
                         <img
                             src={brand.imageId.url}
                             alt={brand.imageId.name}
                             className="w-1/2 h-auto object-cover"
                         />
-                        <div className="flex flex-col justify-center ml-4">
+                        <div className="flex flex-col justify-center ml-4 p-4">
                             <h2 className="text-xl font-bold mb-2">{brand.name}</h2>
                             <p className="text-gray-700">{brand.description}</p>
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">

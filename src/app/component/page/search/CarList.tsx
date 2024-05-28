@@ -51,7 +51,7 @@ export default function CarList() {
     const { nextPage, prevPage, paginatedData, currentPage } = useMockPaginate(cars, limit);
 
     const handleInfoClick = (car: Car) => {
-             console.log("Car info clicked:", car);
+        console.log("Car info clicked:", car);
     };
 
     return (
@@ -59,16 +59,20 @@ export default function CarList() {
             <h1 className="text-center text-3xl font-bold mb-8">Car List</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20">
                 {paginatedData.map((car) => (
-                    <div key={car.carId} className="card bg-base-100 shadow-xl image-full">
-                        <figure><img src={car.imageId.url} alt={car.imageId.name} className="w-full h-auto" /></figure>
+                    <div
+                        key={car.carId}
+                        className="card bg-base-100 shadow-xl image-full transform transition-transform duration-300 hover:scale-105"
+                    >
+                        <figure>
+                            <img src={car.imageId.url} alt={car.imageId.name} className="w-full h-auto" />
+                        </figure>
                         <div className="card-body p-4">
-                            <h2 className="card-title text-lg font-bold mb-2">{car.brandId.name} {car.model}</h2>
+                            <h2 className="card-title text-lg font-bold mb-2">
+                                {car.brandId.name} {car.model}
+                            </h2>
                             <p className="text-white-600 mb-4">{car.description}</p>
                             <div className="card-actions flex justify-end">
-                                <button
-                                    onClick={() => handleInfoClick(car)}
-                                    className="btn btn-primary"
-                                >
+                                <button onClick={() => handleInfoClick(car)} className="btn btn-primary">
                                     Info
                                 </button>
                             </div>
