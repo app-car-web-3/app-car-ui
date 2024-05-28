@@ -1,5 +1,5 @@
 import BackgroundCarousel from '../home/BackgroundCarousel';
-import NavBar from './nav';
+import NavBar from './Nav';
 
 export default function DefaultPage() {
     return (

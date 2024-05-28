@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./client.css";
 const inter = Inter({ subsets: ["latin"] });
-import NavBar from "../component/page/home/nav";
+import NavBar from "../component/page/home/Nav";
 
 export const metadata: Metadata = {
   title: "Dabanao",
