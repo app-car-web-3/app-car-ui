@@ -37,7 +37,7 @@ const NavBar: React.FC = () => {
                         </li>
                              <li>
                             <Link href="/client/appointment">
-                                <div className={`block py-2 px-3 rounded md:p-0 ${pathname === '#' ? 'text-orange bg-orange-700 md:bg-transparent md:text-orange-700 dark:text-white md:dark:text-orange-500' : 'text-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orange-700 dark:text-white md:dark:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'}`}>
+                                <div className={`block py-2 px-3 rounded md:p-0 ${pathname === '/client/appointment' ? 'text-orange bg-orange-700 md:bg-transparent md:text-orange-700 dark:text-white md:dark:text-orange-500' : 'text-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orange-700 dark:text-white md:dark:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'}`}>
                                     Appointment
                                 </div>
                             </Link>

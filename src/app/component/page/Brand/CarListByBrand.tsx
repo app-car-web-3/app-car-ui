@@ -61,7 +61,7 @@ const CarListByBrand: React.FC<CarListProps> = ({ url, brand }) => {
 
     return (
         <div className="container mx-auto py-8">
-            <h1 className="text-center text-3xl font-bold mb-8">Car List of {brand}</h1>
+            <h1 className="text-center text-3xl font-bold mb-8">Car List car {brand}</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20">
                 {paginatedData.map((car) => (
                     <div
