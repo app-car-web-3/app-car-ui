@@ -52,8 +52,9 @@ export default function CarList() {
 
     const handleInfoClick = (car: Car) => {
         console.log("Car info clicked:", car);
+        window.location.href = `/car-info?carId=${encodeURIComponent(car.carId)}`;
     };
-
+    
     return (
         <div className="container mx-auto py-8">
             <h1 className="text-center text-3xl font-bold mb-8">Car List</h1>

@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { fetchData } from '../api/api';
 import * as z from 'zod';
 import { postData } from '../api/api';
+import { useUrl } from 'nextjs-current-url';
 
 interface Image {
     imageId: number;
@@ -50,6 +51,13 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const AppointmentForm: React.FC = () => {
+    const { pathname } = useUrl() ?? {};
+    let carId = null;
+    if (pathname) {
+        const searchParams = new URLSearchParams(window.location.search);
+        carId = searchParams.get("carId") || "";
+    }
+    carId == "" || null ? carId = "Select car" : carId = Number(carId) ;
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -69,7 +77,8 @@ const AppointmentForm: React.FC = () => {
     }
   };
 
-  const fetchCarById = async (carId: number) => {
+
+ const  fetchCarById = async (carId: number) => {
     try {
       const car = await fetchData(`http://localhost:8080/api/car/${carId}`);
       const newCar =  car ;
@@ -110,7 +119,7 @@ const AppointmentForm: React.FC = () => {
             {...register('carId', { valueAsNumber: true })} 
             className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="">Select a car</option>
+            <option value={carId}>{carId}</option>
             {cars.map((car) => (
               <option key={car.carId} value={car.carId}>
                 {car.brandId.name} {car.model}
