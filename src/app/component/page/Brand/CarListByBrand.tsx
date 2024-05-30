@@ -56,7 +56,7 @@ const CarListByBrand: React.FC<CarListProps> = ({ url, brand }) => {
     const { nextPage, prevPage, paginatedData, currentPage } = useMockPaginate(cars, limit);
 
     const handleInfoClick = (car: Car) => {
-        console.log("Car info clicked:", car);
+        window.location.href = `/client/appointment?carId=${encodeURIComponent(car.carId)}`;
     };
 
     return (
