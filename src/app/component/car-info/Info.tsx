@@ -90,36 +90,36 @@ export default function CarInfo({ id }: { id: number }) {
                             <h3 className="text-lg font-semibold text-gray-800">Description:</h3>
                             <p className="text-base text-gray-700 mb-4">{car.description}</p>
                             <div className="flex justify-between items-center">
-                                <div>
+                                <div className="flex gap-1">
                                     <h3 className="text-lg font-semibold text-gray-800">Model:</h3>
                                     <p className="text-base text-gray-700">{car.model}</p>
                                 </div>
                             </div>
-                            <div>
+                            <div className="flex gap-1">
                                 <h3 className="text-lg font-semibold text-gray-800">Color:</h3>
                                 <p className="text-base text-gray-700">{car.color}</p>
                             </div>
-                            <div>
+                            <div className="flex gap-1">
                                 <h3 className="text-lg font-semibold text-gray-800">Motor Type:</h3>
                                 <p className="text-base text-gray-700">{car.motorType}</p>
                             </div>
-                            <div>
+                            <div className="flex gap-1">
                                 <h3 className="text-lg font-semibold text-gray-800">Power:</h3>
                                 <p className="text-base text-gray-700">{car.power} HP</p>
                             </div>
-                            <div>
+                            <div className="flex gap-1">
                                 <h3 className="text-lg font-semibold text-gray-800">Place Number:</h3>
                                 <p className="text-base text-gray-700">{car.placeNumber}</p>
                             </div>
-                            <div>
+                            <div className="flex gap-1">
                                 <h3 className="text-lg font-semibold text-gray-800">Status:</h3>
                                 <p className="text-base text-gray-700">{car.status}</p>
                             </div>
-                            <div>
+                            <div className="flex gap-1">
                                 <h3 className="text-lg font-semibold text-gray-800">Type:</h3>
                                 <p className="text-base text-gray-700">{car.type}</p>
                             </div>
-                            <div>
+                            <div className="flex gap-1">
                                 <h3 className="text-lg font-semibold text-gray-800">Price:</h3>
                                 <p className="text-base text-gray-700">${car.price}</p>
                             </div>
