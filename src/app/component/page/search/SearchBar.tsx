@@ -7,7 +7,6 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     const [searchQuery, setSearchQuery] = useState("");
-    const [debouncedSearchQuery] = useDebounce(searchQuery, 500);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);

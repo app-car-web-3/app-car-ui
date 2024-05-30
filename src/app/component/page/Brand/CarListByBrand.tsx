@@ -1,5 +1,3 @@
-"use client"
-import { useUrl } from 'nextjs-current-url';
 import { fetchData } from "../../api/api";
 import React, { useEffect, useState } from "react";
 import { useMockPaginate } from '../home/Pagination';
@@ -33,26 +31,22 @@ interface Car {
     imageId: Image;
 }
 
-export default function CarListByBrand() {
-    const { pathname } = useUrl() ?? {};
-    let brand = "";
+interface CarListProps {
+    url: string;
+    brand: string;
+}
 
-    if (pathname) {
-        const searchParams = new URLSearchParams(window.location.search);
-        brand = searchParams.get("brand") || "";
-    }
-
-    console.log(brand);
+const CarListByBrand: React.FC<CarListProps> = ({ url, brand }) => {
     const [cars, setCars] = useState<Car[]>([]);
     const limit = 6;
 
     useEffect(() => {
         fetchCarsList();
-    }, [brand]);
+    }, [url, brand]);
 
     const fetchCarsList = async () => {
         try {
-            const data = await fetchData(`http://localhost:8080/api/car/brand?brand=${brand}`);
+            const data = await fetchData(`${url}?brand=${brand}`);
             setCars(data as Car[]);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -114,4 +108,6 @@ export default function CarListByBrand() {
             </a>
         </div>
     );
-}
+};
+
+export default CarListByBrand;
