@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./admin.css";
+import NavBar from "../component/admin/Nav";
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Dabanao",
@@ -20,6 +22,7 @@ export default function RootLayout({
       <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
       </head>
       <body className={inter.className}>
+        <NavBar/>
         {children}
       </body>
     </html>
