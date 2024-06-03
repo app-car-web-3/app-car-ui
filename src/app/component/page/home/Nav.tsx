@@ -1,9 +1,22 @@
 "use client"
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
+import { useState } from 'react';
+import Login from './LoginForm';
 
 const NavBar: React.FC = () => {
     const pathname = usePathname();
+
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+    const handleLoginClick = () => {
+        setIsLoginOpen(true);
+    }
+
+    const handleClose = () => {
+        setIsLoginOpen(false);
+    }
+
       return (
         <nav className="fixed top-0 w-full flex items-center justify-between bg-black bg-opacity-40 py-2 shadow-md dark:bg-neutral-700 lg:py-4 z-20">
             <div className="flex w-full items-center justify-between px-3">
@@ -46,10 +59,16 @@ const NavBar: React.FC = () => {
                 </div>
                 <div>
                     <a className="mx-2 my-1 flex items-center lg:mb-0 lg:mt-0 text-white" href="#">
-                        <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Login</span>
+                        <span 
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+                        onClick={handleLoginClick}
+                        >
+                            Login
+                        </span>
                     </a>
                 </div>
             </div>
+            <Login isOpen={isLoginOpen} onClose={handleClose}/>
         </nav>
     );
 };
