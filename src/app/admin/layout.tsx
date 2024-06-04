@@ -23,7 +23,11 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <NavBar/>
-        {children}
+        <div className="p-4 sm:ml-64">
+            <div className="p-4 border-gray-200 border-dashed rounded-lg dark:border-gray-700 scrollable-container">
+              {children}
+            </div>
+        </div>
       </body>
     </html>
   );
