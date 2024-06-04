@@ -1,7 +1,7 @@
 import AppointmentForm from "@/app/component/appointment/Appointment";
 
-export default function appointment(){
+export default function appointment() {
     return <section>
-        <AppointmentForm/>
-    </section>
+                 <AppointmentForm />
+           </section>
 }
