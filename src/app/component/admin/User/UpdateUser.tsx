@@ -1,32 +1,55 @@
-"use client"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { postData } from "../../api/api";
+import { putData } from "../../api/api";
 
 const userSchema = z.object({
-    id: z.number().optional(),
+    id: z.number(),
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must be at least 6 characters long"),
 });
 
-type User = z.infer<typeof userSchema>;
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+}
 
-const UpdateUser: React.FC = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<User>({
+const UpdateUser = ({ id }: { id: number }) => {
+    const [user, setUser] = useState<User | null>(null);
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<User>({
         resolver: zodResolver(userSchema),
+        defaultValues: user || {}
     });
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/api/users/${id}`);
+                const data = await response.json();
+                setUser(data);
+                reset(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUser();
+    }, [id, reset]);
 
     const onSubmit: SubmitHandler<User> = async (data) => {
         try {
-            const url = "http://localhost:8080/api/users/register";
-            const response = await postData<User>(url, data);
-            alert('User registered successfully!');
+            console.log(data);
+            const url = `http://localhost:8080/api/users/${id}`;
+            await putData<User>(url, data);
+            alert('Update User successfully!');
             window.location.href = 'http://localhost:3000/admin/users';
         } catch (error) {
-            console.error('Error adding user:', error);
+            console.error('Error updating user:', error);
         }
     };
 
@@ -54,7 +77,7 @@ const UpdateUser: React.FC = () => {
                     </svg>
                 </div>
                 <div className="font-medium flex flex-row justify-between mt-8 mx-4">
-                    <p className="mt-3 text-base">Register</p>
+                    <p className="mt-3 text-base">Update User</p>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-6 mx-4">
                     <div>
@@ -69,7 +92,6 @@ const UpdateUser: React.FC = () => {
                             id="name"
                             {...register("name")}
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm hover:border-gray-600"
-                            required
                         />
                         {errors.name && <p className="text-red-600 text-xs mt-1">{errors.name.message}</p>}
                     </div>
@@ -85,7 +107,6 @@ const UpdateUser: React.FC = () => {
                             id="email"
                             {...register("email")}
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm hover:border-gray-600"
-                            required
                         />
                         {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email.message}</p>}
                     </div>
@@ -101,13 +122,12 @@ const UpdateUser: React.FC = () => {
                             id="password"
                             {...register("password")}
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm hover:border-gray-600"
-                            required
                         />
                         {errors.password && <p className="text-red-600 text-xs mt-1">{errors.password.message}</p>}
                     </div>
                     <div className="mt-6 mx-4 bg-gray-800 rounded-3xl hover:bg-gray-600 transition duration-300 ease-in-out">
                         <button type="submit" className="w-full px-4 py-2 text-white">
-                            Register
+                            Update
                         </button>
                     </div>
                 </form>
