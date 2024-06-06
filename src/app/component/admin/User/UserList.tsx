@@ -35,15 +35,20 @@ export default function UserList() {
     }
 
     const deleteUser = async (user: User): Promise<void> => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
         
-        try {
-            await deleteData(`http://localhost:8080/api/users/${user.id}`);
-            alert("Delete user successful");
+        if (confirmDelete) {
+            try {
+                await deleteData(`http://localhost:8080/api/users/${user.id}`);
+                window.location.href = 'http://localhost:3000/admin/users';
+            } catch (error) {
+                console.error("Error deleting user:", error);
+            }
+        } else {
             window.location.href = 'http://localhost:3000/admin/users';
-        } catch (error) {
-            console.error("Error deleting user:", error);
         }
     };
+    
     
     return (
         <div className="overflow-x-auto">
