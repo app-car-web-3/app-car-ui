@@ -52,6 +52,26 @@ const UpdateImage = ({ id }: { id: number }) => {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <div className="relative w-full max-w-md bg-white p-6 rounded-3xl shadow-lg">
+            <div className="flex justify-end">
+                    <svg
+                        className="w-6 h-6 text-gray-800 dark:text-white hover:scale-105 transition duration-300 ease-in-out"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        onClick={() => window.location.href = 'http://localhost:3000/admin/images'}
+                    >
+                        <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18 17.94 6M18 18 6.06 6"
+                        />
+                    </svg>
+                </div>
                 <div className="font-medium flex flex-row justify-between mt-8 mx-4">
                     <p className="mt-3 text-base">Update Image</p>
                 </div>
