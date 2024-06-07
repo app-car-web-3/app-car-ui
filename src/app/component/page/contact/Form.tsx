@@ -1,9 +1,8 @@
-"use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import emailjs from 'emailjs-com';
+import sendEmail from './SendEmail';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -18,18 +17,30 @@ const ContactForm: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    emailjs.send('', '', data, '')
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      }, (err) => {
-        console.log('FAILED...', err);
-      });
+  const onSubmit: SubmitHandler<FormData> = (data, event) => {
+    const confirmSend = window.confirm("Are you sure you want to send this message?");
+    
+    if (!confirmSend) {
+      return;
+    }
+  
+    sendEmail({
+      name: data.name,
+      email: data.email,
+      message: data.message,
+    })
+    .then((response:any) => {
+      alert("Email sent successfully!");
+      console.log('SUCCESS!', response.status, response.text);
+    })
+    .catch((err:any) => {
+      console.log('FAILED...', err);
+    });
   };
-
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className=" w-full m-4 p-6  rounded-lg bg-white shadow-md">
+      <div className="w-full m-4 p-6 rounded-lg bg-white shadow-md">
         <h2 className="text-2xl font-bold mb-4 text-center">Contact Us</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="flex flex-col">
@@ -38,7 +49,7 @@ const ContactForm: React.FC = () => {
               type="text" 
               id="name" 
               {...register('name')} 
-              className="p-2  border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" 
             />
             {errors.name && <p className="text-red-500">{errors.name.message}</p>}
           </div>
@@ -61,7 +72,7 @@ const ContactForm: React.FC = () => {
             ></textarea>
             {errors.message && <p className="text-red-500">{errors.message.message}</p>}
           </div>
-           <button type="submit" className="btn btn-primary ">Send Message</button>
+          <button type="submit" className="btn btn-primary">Send Message</button>
         </form>
       </div>
     </div>
