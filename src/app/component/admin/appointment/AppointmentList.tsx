@@ -74,42 +74,42 @@ export default function ListAppointment() {
 
     return <div className="overflow-x-auto">
         <p className="text-center text-4xl font-black text-gray-900 dark:text-white">List Appointment</p>
-         <table className="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>FirstName</th>
-                        <th>Email</th>
-                        <th>Message</th>
-                        <th>contact</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {paginatedData.map((appointment, index) => (
-                        <tr  key={appointment.appointmentId}>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
+        <table className="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>FirstName</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>contact</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {paginatedData.map((appointment, index) => (
+                    <tr key={appointment.appointmentId}>
+                        <td>
+                            <div className="flex items-center gap-3">
+                                <div className="avatar">
+                                    <div className="mask mask-squircle w-12 h-12">
                                         <td>{appointment.appointmentId}</td>
-                                        </div>
                                     </div>
                                 </div>
-                            </td>
-                            <td>{appointment.name}</td>
-                            <td>{appointment.firstName}</td>
-                            <td>{appointment.email}</td>
-                            <td>{appointment.message}</td>
-                            <td>{appointment.contact}</td>
-                            <td>{appointment.appointmentDate}</td>
-                            <td>{appointment.status}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                            </div>
+                        </td>
+                        <td>{appointment.name}</td>
+                        <td>{appointment.firstName}</td>
+                        <td>{appointment.email}</td>
+                        <td>{appointment.message}</td>
+                        <td>{appointment.contact}</td>
+                        <td>{appointment.appointmentDate}</td>
+                        <td>{appointment.status}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
         <div className="flex justify-center mt-8">
             <button
                 onClick={prevPage}
