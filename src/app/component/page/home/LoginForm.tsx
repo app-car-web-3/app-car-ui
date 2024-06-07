@@ -34,9 +34,6 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
         <div className="font-medium flex flex-row justify-between mt-8 mx-4">
           <p className="mt-3 text-base">Connexion</p>
-          <button className="w-28 px-4 py-2 text-sm text-black rounded-3xl border border-black bg-white hover:scale-105 transition duration-300 ease-in-out">
-            S'inscrire
-          </button>
         </div>
 
         <form className="space-y-4 mt-6 mx-4">
@@ -88,9 +85,9 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
             />
           </svg>
-          <p className="text-sm mx-2">Rester connecté</p>
+          <p className="text-sm mx-2">Staying connected</p>
           </div>
-          <p className="text-xs underline mt-1 mx-4">Mot de passe oublié ?</p>
+          <p className="text-xs underline mt-1 mx-4">Forgot your password?</p>
         </section>
 
         <div className="mt-6 mx-4 bg-gray-800 rounded-3xl hover:bg-gray-600 transition duration-300 ease-in-out">
@@ -100,7 +97,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </div>
          
          <section className="mx-4 text-justify text-sm mt-5">
-            <p>En cliquant sur Se connecter, vous acceptez de respecter les <span className="text-blue-500 underline">Condition d'utilisation</span> et le <span className="text-blue-500 underline">Réglement concernant la confidentialité</span>  de Dabanao.</p>
+            <p>By clicking on Log in, you agree to respect the <span className="text-blue-500 underline">Conditions of use</span> and the <span className="text-blue-500 underline">Confidentiality rules</span> of Dabanao.</p>
          </section>
       </div>
     </div>
