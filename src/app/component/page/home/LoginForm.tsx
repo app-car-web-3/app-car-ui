@@ -62,9 +62,6 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
         <div className="font-medium flex flex-row justify-between mt-8 mx-4">
           <p className="mt-3 text-base">Connexion</p>
-          <button className="w-28 px-4 py-2 text-sm text-black rounded-3xl border border-black bg-white hover:scale-105 transition duration-300 ease-in-out">
-            S'inscrire
-          </button>
         </div>
 
         <form className="space-y-4 mt-6 mx-4" onSubmit={handleSubmit}>
@@ -102,9 +99,9 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           </div>
           <button
             type="submit"
-            className="mt-6 mx-4 bg-gray-800 rounded-3xl hover:bg-gray-600 transition duration-300 ease-in-out w-full px-4 py-2 text-white"
+            className="mt-6 mx-4 bg-blue-500 rounded-3xl hover:bg-blue-600 transition duration-300 ease-in-out w-full px-4 py-2 text-black"
           >
-            Se connecter
+          Sign in
           </button>
         </form>
 
