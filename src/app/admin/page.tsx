@@ -16,9 +16,12 @@ const Dashboard = () => (
 
 export default function AdminPage(){
     return (
-        <Admin dashboard={Dashboard} dataProvider={dataProvider}>
-            <Resource name="users" list={ListGuesser} />
-        </Admin>
+        // <Admin dashboard={Dashboard} dataProvider={dataProvider}>
+        //     <Resource name="users" list={ListGuesser} />
+        // </Admin>
+        <div>
+            
+        </div>
     );
 };
 
