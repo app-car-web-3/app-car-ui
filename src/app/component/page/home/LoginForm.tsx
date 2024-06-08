@@ -1,9 +1,37 @@
+import React, { useState } from "react";
+
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8080/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (response.ok) {
+        onClose(); 
+        window.location.href = "http://localhost:3000/admin";
+      } else {
+        console.error("Erreur d'authentification");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la connexion au backend:", error);
+    }
+  };
+
   if (!isOpen) {
     return null;
   }
@@ -24,9 +52,9 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M6 18 17.94 6M18 18 6.06 6"
             />
           </svg>
@@ -39,7 +67,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        <form className="space-y-4 mt-6 mx-4">
+        <form className="space-y-4 mt-6 mx-4" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
@@ -52,6 +80,8 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               id="email"
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm hover:border-gray-600"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -66,44 +96,34 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               id="password"
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm hover:border-gray-600"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-        </form>
-        <section className="flex justify-between mt-5">
-          <div className="flex flex-row mx-4">
-          <svg
-            className="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
+          <button
+            type="submit"
+            className="mt-6 mx-4 bg-gray-800 rounded-3xl hover:bg-gray-600 transition duration-300 ease-in-out w-full px-4 py-2 text-white"
           >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
-          <p className="text-sm mx-2">Rester connecté</p>
-          </div>
-          <p className="text-xs underline mt-1 mx-4">Mot de passe oublié ?</p>
-        </section>
-
-        <div className="mt-6 mx-4 bg-gray-800 rounded-3xl hover:bg-gray-600 transition duration-300 ease-in-out">
-          <button type="submit" className="w-full px-4 py-2 text-white">
-            Login
+            Se connecter
           </button>
-        </div>
-         
-         <section className="mx-4 text-justify text-sm mt-5">
-            <p>En cliquant sur Se connecter, vous acceptez de respecter les <span className="text-blue-500 underline">Condition d'utilisation</span> et le <span className="text-blue-500 underline">Réglement concernant la confidentialité</span>  de Dabanao.</p>
-         </section>
+        </form>
+
+        <section className="mx-4 text-justify text-sm mt-5">
+          <p>
+            En cliquant sur Se connecter, vous acceptez de respecter les{" "}
+            <span className="text-blue-500 underline">
+              Condition d'utilisation
+            </span>{" "}
+            et le{" "}
+            <span className="text-blue-500 underline">
+              Réglement concernant la confidentialité
+            </span>{" "}
+            de Dabanao.
+          </p>
+        </section>
       </div>
     </div>
   );
 };
+
 export default Login;
