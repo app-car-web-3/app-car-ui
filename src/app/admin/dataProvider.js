@@ -9,6 +9,4 @@
 //     return fetchUtils.fetchJson(url, options);
 // };
 
-// const dataProvider = simpleRestProvider(apiUrl, httpClient);
 
-// export default dataProvider;
