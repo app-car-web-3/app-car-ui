@@ -77,6 +77,11 @@ export default function ListAppointment() {
         <table className="table">
             <thead>
                 <tr>
+                    <th>
+                        <label>
+                         
+                        </label>
+                    </th>
                     <th>Id</th>
                     <th>Name</th>
                     <th>FirstName</th>
@@ -90,6 +95,11 @@ export default function ListAppointment() {
             <tbody>
                 {paginatedData.map((appointment, index) => (
                     <tr key={appointment.appointmentId}>
+                        <th>
+                            <label>
+                                <input type="checkbox" className="checkbox" />
+                            </label>
+                        </th>
                         <td>
                             <div className="flex items-center gap-3">
                                 <div className="avatar">

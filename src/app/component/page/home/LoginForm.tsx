@@ -61,6 +61,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         <form className="space-y-4 mt-6 mx-4" onSubmit={handleSubmit}>
+        <p className="text-center text-3xl text-black font-bold">Sign In</p>
           <div>
             <label
               htmlFor="email"

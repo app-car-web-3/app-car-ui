@@ -74,6 +74,11 @@ export default function ListOfCar() {
             <table className="table">
                 <thead>
                     <tr>
+                        <th>
+                            <label>
+                                <input type="checkbox" className="checkbox" />
+                            </label>
+                        </th>
                         <th>Image</th>
                         <th>Name</th>
                         <th>Description</th>
@@ -85,6 +90,11 @@ export default function ListOfCar() {
                 <tbody>
                     {paginatedData.map((car, index) => (
                         <tr key={car.carId}>
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
                             <td>
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">

@@ -51,6 +51,11 @@ export default function ImageList() {
             <table className="table">
                 <thead>
                     <tr>
+                        <th>
+                            <label>
+                                <input type="checkbox" className="checkbox" />
+                            </label>
+                        </th>
                         <th>Image</th>
                         <th>Name</th>
                         <th>Action</th>
@@ -59,6 +64,11 @@ export default function ImageList() {
                 <tbody>
                     {paginatedData.map((img, index) => (
                         <tr key={img.imageId}>
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
                             <td>
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">

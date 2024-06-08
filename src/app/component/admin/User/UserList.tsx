@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect, use } from "react";
-import { fetchData , deleteData} from "../../api/api";
+import { fetchData, deleteData } from "../../api/api";
 import { UUID } from "crypto";
 import { useMockPaginate } from "../../page/home/Pagination";
 
@@ -30,13 +30,13 @@ export default function UserList() {
 
     const { nextPage, prevPage, paginatedData, currentPage } = useMockPaginate(users, limit);
 
-    const updateUser = (user:User) =>{
+    const updateUser = (user: User) => {
         window.location.href = `/admin/users/update-user?id=${encodeURIComponent(user.id)}`;
     }
 
     const deleteUser = async (user: User): Promise<void> => {
         const confirmDelete = window.confirm("Are you sure you want to delete this user?");
-        
+
         if (confirmDelete) {
             try {
                 await deleteData(`http://localhost:8080/api/users/${user.id}`);
@@ -48,13 +48,18 @@ export default function UserList() {
             window.location.href = 'http://localhost:3000/admin/users';
         }
     };
-    
-    
+
+
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                     <tr>
+                        <th>
+                            <label>
+                                <input type="checkbox" className="checkbox" />
+                            </label>
+                        </th>
                         <th className="py-3 px-6 text-left"></th>
                         <th className="py-3 px-6 text-left">Name</th>
                         <th className="py-3 px-6 text-left">Email</th>
@@ -62,8 +67,13 @@ export default function UserList() {
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {paginatedData.map((user, index) => ( 
+                    {paginatedData.map((user, index) => (
                         <tr key={user.id} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
                             <td className="py-4 px-6">{index + 1}</td>
                             <td className="py-4 px-6">{user.name}</td>
                             <td className="py-4 px-6">{user.email}</td>
@@ -80,7 +90,7 @@ export default function UserList() {
                                 </button>
                             </td>
                         </tr>
-                    ))} 
+                    ))}
                 </tbody>
             </table>
             <div className="flex justify-center mt-8">
