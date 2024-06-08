@@ -60,6 +60,8 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           </svg>
         </div>
 
+        <p className="text-center text-3xl text-black font-bold">Sign In</p>
+
         <form className="space-y-4 mt-6 mx-4" onSubmit={handleSubmit}>
           <div>
             <label
@@ -93,12 +95,16 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button
-            type="submit"
-            className="mt-6 mx-4 bg-blue-500 rounded-3xl hover:bg-blue-600 transition duration-300 ease-in-out w-full px-4 py-2 text-black"
-          >
-          Sign in
-          </button>
+          <div className="mt-6 mx-4 bg-gray-800 rounded-3xl hover:bg-gray-600 transition duration-300 ease-in-out">
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white"
+              >
+                Sign in
+            </button>
+          </div>
+          
+          
         </form>
 
         <section className="mx-4 text-justify text-sm mt-5">

@@ -1,9 +1,48 @@
 "use client"
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
+import { UUID } from 'crypto';
+
+
+interface User {
+    id: UUID;
+    name: string;
+    email: string;
+    password: string;
+}
+
+async function postData<T>(url: string, body?: T): Promise<Response> {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      credentials: 'include', 
+    });
+    return response;
+  }
+  
+  
 
 const NavBar: React.FC = () => {
     const pathname = usePathname();
+
+    const handleLogout = async () => {
+        try {
+            window.location.href = "/client";
+            const response = await postData<User>("http://localhost:8080/api/users/logout");
+            if (response.ok) {
+                localStorage.clear();
+                window.location.href = "http://localhost:3000";
+            } else {
+                console.error("Logout failed");
+            }
+        } catch (error) {
+            console.error("Error during logout:", error);
+        }
+    };
+
     return (
         <nav>
             <div>
@@ -65,7 +104,7 @@ const NavBar: React.FC = () => {
                                     <span className={`block py-2 px-3 rounded md:p-0 ${pathname === '/admin/appointments' ? 'text-orange bg-orange-700 md:bg-transparent md:text-orange-700 dark:text-white md:dark:text-orange-500' : 'text-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orange-700 dark:text-white md:dark:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'}`}>Appointment</span>
                                 </a>
                             </li>
-                            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center">
+                            <button onClick={handleLogout}  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center">
                                 <svg className="w-6 h-6 mr-2 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2" />
                                 </svg>
