@@ -22,7 +22,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       });
 
       if (response.ok) {
-        onClose(); 
+        onClose();
         window.location.href = "http://localhost:3000/admin";
       } else {
         console.error("Erreur d'authentification");
@@ -36,8 +36,8 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     return null;
   }
 
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center">
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="relative w-[30%] h-[85%] mt-20 bg-white p-6 rounded-3xl shadow-lg">
         <div className="flex justify-end">
           <svg
@@ -97,26 +97,26 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             type="submit"
             className="mt-6 mx-4 bg-blue-500 rounded-3xl hover:bg-blue-600 transition duration-300 ease-in-out w-full px-4 py-2 text-black"
           >
-          Sign in
+            Sign in
           </button>
         </form>
 
         <section className="mx-4 text-justify text-sm mt-5">
           <p>
-          By clicking on Log in, you agree to respect the{" "}
+            By clicking on Log in, you agree to respect the{" "}
             <span className="text-blue-500 underline">
-            Conditions of use
+              Conditions of use
             </span>{" "}
             and the{" "}
             <span className="text-blue-500 underline">
-            Privacy policy
+              Privacy policy
             </span>{" "}
-             Dabanao.
+            Dabanao.
           </p>
         </section>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;
