@@ -13,7 +13,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/users/login", {
+      const response = await fetch("https://app-car-api.onrender.com/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -23,7 +23,7 @@ const Login: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
       if (response.ok) {
         onClose();
-        window.location.href = "http://localhost:3000/admin/users";
+        window.location.href = "https://app-car-api.onrender.com/admin/users";
       } else {
         console.error("Erreur d'authentification");
       }

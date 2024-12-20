@@ -26,7 +26,7 @@ const UpdateImage = ({ id }: { id: number }) => {
     useEffect(() => {
         const fetchImage = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/image/${id}`);
+                const response = await fetch(`https://app-car-api.onrender.com/api/image/${id}`);
                 const data = await response.json();
                 setImage(data);
                 reset(data);
@@ -40,10 +40,10 @@ const UpdateImage = ({ id }: { id: number }) => {
 
     const onSubmit: SubmitHandler<Image> = async (data) => {
         try {
-            const url = `http://localhost:8080/api/image/${id}`;
+            const url = `https://app-car-api.onrender.com/api/image/${id}`;
             await putData<Image>(url, data);
             alert('Update Image successfully!');
-            window.location.href = 'http://localhost:3000/admin/images';
+            window.location.href = 'https://dabanao.netlify.app/admin/images';
         } catch (error) {
             console.error('Error updating image:', error);
         }
@@ -61,7 +61,7 @@ const UpdateImage = ({ id }: { id: number }) => {
                         height="24"
                         fill="none"
                         viewBox="0 0 24 24"
-                        onClick={() => window.location.href = 'http://localhost:3000/admin/images'}
+                        onClick={() => window.location.href = 'https://dabanao.netlify.app/admin/images'}
                     >
                         <path
                             stroke="currentColor"

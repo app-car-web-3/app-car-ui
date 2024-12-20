@@ -31,10 +31,10 @@ const NavBar: React.FC = () => {
     const handleLogout = async () => {
         try {
             window.location.href = "/client";
-            const response = await postData<User>("http://localhost:8080/api/users/logout");
+            const response = await postData<User>("https://app-car-api.onrender.com/api/users/logout");
             if (response.ok) {
                 localStorage.clear();
-                window.location.href = "http://localhost:3000";
+                window.location.href = "https://dabanao.netlify.app/";
             } else {
                 console.error("Logout failed");
             }

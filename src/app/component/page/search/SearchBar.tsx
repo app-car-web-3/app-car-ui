@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDebounce } from "use-debounce";
 
 interface SearchBarProps {
     onSearch: (query: string) => void;

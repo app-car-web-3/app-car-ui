@@ -39,7 +39,7 @@ export default function ListOfCar() {
     useEffect(() => {
         const fetchCars = async () => {
             try {
-                const data = await fetchData("http://localhost:8080/api/car/all");
+                const data = await fetchData("https://app-car-api.onrender.com/api/car/all");
                 setCars(data as Car[]);
             } catch (error) {
                 console.error("Error fetching cars:", error);
@@ -59,13 +59,13 @@ export default function ListOfCar() {
         const confirmDelete = window.confirm("Are you sure you want to delete this car?");
         if (confirmDelete) {
             try {
-                await deleteData(`http://localhost:8080/api/car/${car.carId}`);
-                window.location.href = 'http://localhost:3000/admin/cars';
+                await deleteData(`https://app-car-api.onrender.com/api/car/${car.carId}`);
+                window.location.href = 'https://dabanao.netlify.app/admin/cars';
             } catch (error) {
                 console.error("Error deleting car:", error);
             }
         } else {
-            window.location.href = 'http://localhost:3000/admin/cars';
+            window.location.href = 'https://dabanao.netlify.app/admin/cars';
         }
     };
 

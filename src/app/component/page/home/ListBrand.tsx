@@ -25,7 +25,7 @@ export default function ListBrand() {
 
     const fetchBrandsList = async () => {
         try {
-            const data = await fetchData("http://localhost:8080/api/brand/all");
+            const data = await fetchData("https://app-car-api.onrender.com/api/brand/all");
             setBrands(data as Brand[]);
         } catch (error) {
             console.error("Erreur lors de la récupération des données :", error);

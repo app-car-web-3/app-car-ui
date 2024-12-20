@@ -21,10 +21,10 @@ const RegisterUser: React.FC = () => {
 
     const onSubmit: SubmitHandler<User> = async (data) => {
         try {
-            const url = "http://localhost:8080/api/users/register";
+            const url = "https://app-car-api.onrender.com/api/users/register";
             const response = await postData<User>(url, data);
             alert('User registered successfully!');
-            window.location.href = 'http://localhost:3000/admin/users';
+            window.location.href = 'https://dabanao.netlify.app/admin/users';
         } catch (error) {
             console.error('Error adding user:', error);
         }
@@ -42,7 +42,7 @@ const RegisterUser: React.FC = () => {
                         height="24"
                         fill="none"
                         viewBox="0 0 24 24"
-                        onClick={() => window.location.href = 'http://localhost:3000/admin/users'}
+                        onClick={() => window.location.href = 'https://dabanao.netlify.app/admin/users'}
                     >
                         <path
                             stroke="currentColor"

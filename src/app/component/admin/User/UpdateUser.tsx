@@ -29,7 +29,7 @@ const UpdateUser = ({ id }: { id: number }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/users/${id}`);
+                const response = await fetch(`https://app-car-api.onrender.com/api/users/${id}`);
                 const data = await response.json();
                 setUser(data);
                 reset(data);
@@ -44,10 +44,10 @@ const UpdateUser = ({ id }: { id: number }) => {
     const onSubmit: SubmitHandler<User> = async (data) => {
         try {
             console.log(data);
-            const url = `http://localhost:8080/api/users/${id}`;
+            const url = `https://app-car-api.onrender.com/api/users/${id}`;
             await putData<User>(url, data);
             alert('Update User successfully!');
-            window.location.href = 'http://localhost:3000/admin/users';
+            window.location.href = 'https://dabanao.netlify.app/admin/users';
         } catch (error) {
             console.error('Error updating user:', error);
         }
@@ -65,7 +65,7 @@ const UpdateUser = ({ id }: { id: number }) => {
                         height="24"
                         fill="none"
                         viewBox="0 0 24 24"
-                        onClick={() => window.location.href = 'http://localhost:3000/admin/users'}
+                        onClick={() => window.location.href = 'ttps://dabanao.netlify.app/admin/users'}
                     >
                         <path
                             stroke="currentColor"

@@ -53,7 +53,7 @@ const RegisterCar: React.FC = () => {
 
     const fetchBrandsList = async () => {
         try {
-            const data = await fetchData("http://localhost:8080/api/brand/all");
+            const data = await fetchData("https://app-car-api.onrender.com/api/brand/all");
             setBrands(data as Brand[]);
         } catch (error) {
             console.error("Error fetching brands data:", error);
@@ -62,7 +62,7 @@ const RegisterCar: React.FC = () => {
 
     const fetchImagesList = async () => {
         try {
-            const data = await fetchData("http://localhost:8080/api/image/all");
+            const data = await fetchData("https://app-car-api.onrender.com/api/image/all");
             setImages(data as Image[]);
         } catch (error) {
             console.error("Error fetching images data:", error);
@@ -90,10 +90,10 @@ const RegisterCar: React.FC = () => {
                 imageId: selectedImage,
             };
 
-            const url = "http://localhost:8080/api/car/register";
+            const url = "https://app-car-api.onrender.com/api/car/register";
             await postData<CarSubmitData>(url, data);
             alert('Car registered successfully!');
-            window.location.href = 'http://localhost:3000/admin/cars';
+            window.location.href = 'https://dabanao.netlify.app/admin/cars';
         } catch (error) {
             console.error('Error adding car:', error);
         }
@@ -110,7 +110,7 @@ const RegisterCar: React.FC = () => {
                     height="24"
                     fill="none"
                     viewBox="0 0 24 24"
-                    onClick={() => window.location.href = 'http://localhost:3000/admin/cars'}
+                    onClick={() => window.location.href = 'https://dabanao.netlify.app/admin/cars'}
                 >
                     <path
                         stroke="currentColor"

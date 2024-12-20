@@ -18,10 +18,10 @@ const RegisterImage: React.FC = () => {
 
     const onSubmit: SubmitHandler<Image> = async (data) => {
         try {
-            const url = "http://localhost:8080/api/image/register";
+            const url = "https://app-car-api.onrender.com/api/image/register";
             const response = await postData<Image>(url, data);
             alert('Image registered successfully!');
-            window.location.href = 'http://localhost:3000/admin/images';
+            window.location.href = 'https://dabanao.netlify.app/admin/images';
         } catch (error) {
             console.error('Error adding image:', error);
         }
@@ -39,7 +39,7 @@ const RegisterImage: React.FC = () => {
                         height="24"
                         fill="none"
                         viewBox="0 0 24 24"
-                        onClick={() => window.location.href = 'http://localhost:3000/admin/images'}
+                        onClick={() => window.location.href = 'https://dabanao.netlify.app/admin/images'}
                     >
                         <path
                             stroke="currentColor"

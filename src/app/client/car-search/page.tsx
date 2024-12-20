@@ -12,7 +12,7 @@ export default function SearchCar() {
     return (
         <section className="mt-20 p-8">
             <SearchBar onSearch={handleSearch} />
-            <CarListByBrand url="http://localhost:8080/api/car/brand-name"  brand={searchResult}/>
+            <CarListByBrand url="https://app-car-api.onrender.com/api/car/brand-name"  brand={searchResult}/>
         </section>
     );
 }

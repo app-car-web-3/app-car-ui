@@ -1,4 +1,3 @@
-// app/components/UserCard.js
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -11,7 +10,7 @@ export function UserCard() {
     useEffect(() => {
         const fetchUserCount = async () => {
             try {
-                const { json } = await fetchUtils.fetchJson('http://localhost:8080/api/users/all');
+                const { json } = await fetchUtils.fetchJson('https://app-car-api.onrender.com/api/users/all');
                 setUserCount(json.length);
             } catch (error) {
                 console.error('Error fetching user data:', error);

@@ -60,7 +60,7 @@ export default function ListAppointment() {
     useEffect(() => {
         const fetchAppointment = async () => {
             try {
-                const data = await fetchData("http://localhost:8080/api/appointment/all");
+                const data = await fetchData("https://app-car-api.onrender.com/api/appointment/all");
                 setAppointments(data as Appointment[]);
             } catch (error) {
                 console.error("Error fetching cars:", error);

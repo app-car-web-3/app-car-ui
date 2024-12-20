@@ -70,7 +70,7 @@ const AppointmentForm: React.FC = () => {
 
   const fetchCarsList = async () => {
     try {
-      const data = await fetchData("http://localhost:8080/api/car/all");
+      const data = await fetchData("https://app-car-api.onrender.com/api/car/all");
       setCars(data as Car[]);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -80,7 +80,7 @@ const AppointmentForm: React.FC = () => {
 
  const  fetchCarById = async (carId: number) => {
     try {
-      const car = await fetchData(`http://localhost:8080/api/car/${carId}`);
+      const car = await fetchData(`https://app-car-api.onrender.com/api/car/${carId}`);
       const newCar =  car ;
       return newCar;
     } catch (error) {
@@ -94,10 +94,10 @@ const AppointmentForm: React.FC = () => {
       const car = await fetchCarById(data.carId);
       if (car) {
         const appointmentData = { ...data, car };
-        const response = await postData('http://localhost:8080/api/appointment/register', appointmentData);
+        const response = await postData('https://app-car-api.onrender.com/api/appointment/register', appointmentData);
         console.log('Appointment created successfully!', response);
         alert('Appointment created successfully!🙂')
-        window.location.href = 'http://localhost:3000/client';
+        window.location.href = 'https://app-car-api.onrender.com/client';
       } else {
         console.error('Failed to fetch car details');
       }

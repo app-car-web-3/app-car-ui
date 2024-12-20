@@ -41,7 +41,7 @@ export default function CarList() {
 
     const fetchCarsList = async () => {
         try {
-            const data = await fetchData("http://localhost:8080/api/car/all");
+            const data = await fetchData("https://app-car-api.onrender.com/api/car/all");
             setCars(data as Car[]);
         } catch (error) {
             console.error("Error fetching data:", error);

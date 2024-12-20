@@ -36,7 +36,7 @@ export default function CarInfo({ id }: { id: number }) {
     useEffect(() => {
         const fetchCar = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/car/${id}`);
+                const response = await fetch(`https://app-car-api.onrender.com/api/car/${id}`);
                 const data = await response.json();
                 setCar(data);
             } catch (error) {

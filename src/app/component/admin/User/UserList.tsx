@@ -18,7 +18,7 @@ export default function UserList() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const data = await fetchData("http://localhost:8080/api/users/all");
+                const data = await fetchData("https://app-car-api.onrender.com/api/users/all");
                 setUsers(data as User[]);
             } catch (error) {
                 console.error("Error fetching users:", error);
@@ -39,13 +39,13 @@ export default function UserList() {
 
         if (confirmDelete) {
             try {
-                await deleteData(`http://localhost:8080/api/users/${user.id}`);
-                window.location.href = 'http://localhost:3000/admin/users';
+                await deleteData(`https://app-car-api.onrender.com/api/users/${user.id}`);
+                window.location.href = 'https://dabanao.netlify.app/admin/users';
             } catch (error) {
                 console.error("Error deleting user:", error);
             }
         } else {
-            window.location.href = 'http://localhost:3000/admin/users';
+            window.location.href = 'https://dabanao.netlify.app/admin/users';
         }
     };
 

@@ -58,7 +58,7 @@ const UpdateCar: React.FC<UpdateCarProps> = ({ id }) => {
 
     const fetchBrandsList = async () => {
         try {
-            const data = await fetchData("http://localhost:8080/api/brand/all");
+            const data = await fetchData("https://app-car-api.onrender.com/api/brand/all");
             setBrands(data as Brand[]);
         } catch (error) {
             console.error("Error fetching brands data:", error);
@@ -67,7 +67,7 @@ const UpdateCar: React.FC<UpdateCarProps> = ({ id }) => {
 
     const fetchImagesList = async () => {
         try {
-            const data = await fetchData("http://localhost:8080/api/image/all");
+            const data = await fetchData("https://app-car-api.onrender.com/api/image/all");
             setImages(data as Image[]);
         } catch (error) {
             console.error("Error fetching images data:", error);
@@ -77,7 +77,7 @@ const UpdateCar: React.FC<UpdateCarProps> = ({ id }) => {
     useEffect(() => {
         const fetchCarData = async (carId: number) => {
             try {
-                const response = await fetch(`http://localhost:8080/api/car/${carId}`);
+                const response = await fetch(`https://app-car-api.onrender.com/api/car/${carId}`);
                 const data = await response.json();
                 setCar(data);
                 reset(data);
@@ -110,10 +110,10 @@ const UpdateCar: React.FC<UpdateCarProps> = ({ id }) => {
                 imageId: selectedImage,
             };
 
-            const url = `http://localhost:8080/api/car/${id}`;
+            const url = `https://app-car-api.onrender.com/api/car/${id}`;
             await putData<CarSubmitData>(url, data);
             alert('Car updated successfully!');
-            window.location.href = 'http://localhost:3000/admin/cars';
+            window.location.href = 'https://dabanao.netlify.app/admin/cars';
         } catch (error) {
             console.error('Error updating car:', error);
         }
@@ -130,7 +130,7 @@ const UpdateCar: React.FC<UpdateCarProps> = ({ id }) => {
                     height="24"
                     fill="none"
                     viewBox="0 0 24 24"
-                    onClick={() => window.location.href = 'http://localhost:3000/admin/cars'}
+                    onClick={() => window.location.href = 'https://dabanao.netlify.app/admin/cars'}
                 >
                     <path
                         stroke="currentColor"

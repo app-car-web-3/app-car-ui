@@ -16,7 +16,7 @@ export default function ImageList() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const data = await fetchData("http://localhost:8080/api/image/all");
+                const data = await fetchData("https://app-car-api.onrender.com/api/image/all");
                 setImages(data as Image[]);
             } catch (error) {
                 console.error("Error fetching images:", error);
@@ -36,13 +36,13 @@ export default function ImageList() {
         const confirmDelete = window.confirm("Are you sure you want to delete this image?");
         if (confirmDelete) {
             try {
-                await deleteData(`http://localhost:8080/api/image/${img.imageId}`);
-                window.location.href = 'http://localhost:3000/admin/images';
+                await deleteData(`https://app-car-api.onrender.com/api/image/${img.imageId}`);
+                window.location.href = 'https://dabanao.netlify.app/admin/images';
             } catch (error) {
                 console.error("Error deleting image:", error);
             }
         } else {
-            window.location.href = 'http://localhost:3000/admin/images';
+            window.location.href = 'https://dabanao.netlify.app/admin/images';
         }
     };
 
