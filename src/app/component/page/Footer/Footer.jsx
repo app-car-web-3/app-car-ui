@@ -51,7 +51,7 @@ export default function Footer() {
                             </a>
                         </div>
                         <div className="uppercase dark:text-gray-900 font-semibold">E-mail</div>
-                        <a rel="noopener noreferrer" className="hover:text-orange-500" href="#">ticstack@gamil.Comp</a>
+                        <a rel="noopener noreferrer" className="hover:text-orange-500" href="#">ticstack@gamil.com</a>
                         </div>
                 </div>
             </div>
