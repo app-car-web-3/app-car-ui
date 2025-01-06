@@ -2,9 +2,7 @@
 import { useState, useEffect } from 'react';
 
 const images = [
-    '/image1.jpg',
     '/image3.jpg',
-    '/image2.jpg'
 ];
 
 export default function BackgroundCarousel() {
